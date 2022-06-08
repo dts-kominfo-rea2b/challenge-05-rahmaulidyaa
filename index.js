@@ -1,4 +1,4 @@
-const names = ["Halo", "Angel", "Nyoman", "Ketut", "Aisyah"];
+const names = ["Halo", "Rahma", "Maulidya", "Reza", "Adhinata"];
 
 // TODO: Fungsi utama
 // Menerima 2 parameter: list nama dan callback sort
@@ -6,15 +6,35 @@ const names = ["Halo", "Angel", "Nyoman", "Ketut", "Aisyah"];
 // "1. Nama"
 // "2. Nama"
 // ...
-const sorter = null;
+const sorter = (names,cs)=>{
+  let result = cs(names);
+  
+  //buat urutan
+  Array.prototype.mapWithIndexOne = function(func) {
+    const initial = []
+    for (let i = 1; i < this.length + 1; i++) {
+      initial.push(func(this[i - 1], i))
+    }
+    return initial
+  }
+
+  return result.mapWithIndexOne((sorted,index)=>{
+    return `${index}. ${sorted}`;
+  })
+};
 
 // TODO: Fungsi untuk mengurutkan array of string secara ascending
 // mengembalikan array yang sudah diurutkan
-const sortAscending = null;
+const sortAscending = (names) => {
+  return names.sort();
+};
 
 // TODO: Fungsi untuk mengurutkan array of string secara descending
 // mengembalikan array yang sudah diurutkan
-const sortDescending = null;
+const sortDescending = (names) => {
+  names.sort();
+  return names.reverse();
+};
 
 // ! JANGAN DIMODIFIKASI
 (function main() {
